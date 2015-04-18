@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+	</title>
+</head>
+<body>
+	<h1>Yanks Abroad Wiki</h1>
+	<ul>
+		<% for(var i = 0; i < documents.length; i++) { %>
+
+		<li><a href="/document/<%=documents[i].id%>"> <%=documents[i].title%> </a></li>
+		</br>
+		<% } %>
+
+		<li><a href="/authors">See all contributors</a></li>
+		</br>
+
+		<li><a href="/documents/new">Ink to paper</a></li>
+
+
+	</ul>
+
+
+</body>
+</html>

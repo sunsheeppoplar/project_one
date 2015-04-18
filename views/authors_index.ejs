@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+	</title>
+</head>
+<body>
+	<h1>Yanks Abroad Authors</h1>
+	<ul>
+		<% for(var i = 0; i < authors.length; i++) { %>
+
+		<li><a href="/author/<%=authors[i].id%>"> <%=authors[i].name%> </a></li>
+		</br>
+		<% } %>
+
+		<li><a href="/authors/new">Become a contributor</a></li>
+		</br>
+
+		<li><a href="/documents/new">Ink to paper</a></li>
+
+	</ul>
+
+
+</body>
+</html>

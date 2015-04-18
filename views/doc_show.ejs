@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= individualDoc.title %></title>
+	</head>
+	<body>
+		<ul>
+			<img src="<%= individualDoc.image %>">
+			<li><h1><%= individualDoc.title %></h1></li>
+			<li><h4><%= individualDoc.body %></h4></li>
+
+			</br>
+			<li><a href="/post/<%= individualDoc.id %>/edit">edit here</a></li>
+			</br>
+			<li><a href="/">see all pages</a></li>
+
+
+			<form method="POST" action="/post/<%= individualDoc.id %>?_method=DELETE">
+				<button>erase it all</button>
+			</form>
+		</ul>
+	</body>
+</html>

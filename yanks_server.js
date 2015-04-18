@@ -13,7 +13,7 @@ var methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 
 var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('blog.db')
+var db = new sqlite3.Database('./db/yanks.db')
 
 //routes
 
@@ -28,11 +28,31 @@ app.get('/documents', function(req, res) {
 		if (err) {
 			console.log(err);
 		} else {
-			var doucments = data;
+			var documents = data;
+			console.log(documents)
 		}
-		res.render('index.ejs', {documents: documents});
+		res.render('yanks_index.ejs', {documents: documents});
 	});
 });
+
+//show individual document
+app.get('/document/:id', function(req, res) {
+	var id = req.params.id
+	db.get("SELECT * FROM documents WHERE id = ?", id, function(err, data) {
+		if (err) {
+			console.log(err)
+		} else {
+			var individualDoc = data;
+		}
+		res.render('doc_show.ejs', {individualDoc: individualDoc});
+	});
+});
+
+//new post form
+app.get('/documents/new', function(req, res) {
+	res.render('doc_new.ejs')
+});
+
 
 //show all authors
 app.get('/authors', function(req, res) {
@@ -42,10 +62,22 @@ app.get('/authors', function(req, res) {
 		} else {
 			var authors = data;
 		}
-		res.render('index.ejs', {authors: authors});
+		res.render('authors_index.ejs', {authors: authors});
 	});
 });
 
+//show individual author
+app.get('/author/:id', function(req, res) {
+	var id = req.params.id
+	db.get("SELECT * FROM authors WHERE id = ?", id, function(err, data) {
+		if (err) {
+			console.log(err)
+		} else {
+			var individualAuth = data;
+		}
+		res.render('auth_show.ejs', {individualAuth: individualAuth});
+	});
+});
 
 
 app.listen(8888)

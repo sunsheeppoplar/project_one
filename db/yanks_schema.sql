@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS documents;
 CREATE TABLE documents (
 	id INTEGER PRIMARY KEY,
-	title TEXT, body TEXT,
+	title TEXT, body TEXT, image TEXT,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -46,7 +46,18 @@ CREATE TABLE authorships (
 	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TRIGGER timestamp_update BEFORE UPDATE ON posts BEGIN UPDATE posts SET updated_at = CURRENT_TIMESTAMP WHERE id = new.id;
+CREATE TRIGGER timestamp_update BEFORE UPDATE ON documents BEGIN UPDATE documents SET updated_at = CURRENT_TIMESTAMP WHERE id = new.id;
+
+CREATE TRIGGER timestamp_update BEFORE UPDATE ON revisions BEGIN UPDATE revisions SET updated_at = CURRENT_TIMESTAMP WHERE id = new.id;
+
+CREATE TRIGGER timestamp_update BEFORE UPDATE ON subscribers BEGIN UPDATE subscribers SET updated_at = CURRENT_TIMESTAMP WHERE id = new.id;
+
+CREATE TRIGGER timestamp_update BEFORE UPDATE ON authors BEGIN UPDATE authors SET updated_at = CURRENT_TIMESTAMP WHERE id = new.id;
+
+CREATE TRIGGER timestamp_update BEFORE UPDATE ON subscriptions BEGIN UPDATE subscriptions SET updated_at = CURRENT_TIMESTAMP WHERE id = new.id;	
+
+CREATE TRIGGER timestamp_update BEFORE UPDATE ON authorships BEGIN UPDATE authorships SET updated_at = CURRENT_TIMESTAMP WHERE id = new.id;
+
 END;
 
 
