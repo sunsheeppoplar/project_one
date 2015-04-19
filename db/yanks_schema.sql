@@ -33,7 +33,7 @@ CREATE TABLE authors (
 DROP TABLE IF EXISTS subscriptions;
 CREATE TABLE subscriptions (
 	id INTEGER PRIMARY KEY,
-	sub_id INTEGER, doc_id INTEGER,
+	sub_name TEXT, doc_title TEXT,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -41,7 +41,7 @@ CREATE TABLE subscriptions (
 DROP TABLE IF EXISTS authorships;
 CREATE TABLE authorships (
 	id INTEGER PRIMARY KEY,
-	auth_id INTEGER, doc_id INTEGER,
+	auth_name TEXT, doc_title TEXT
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

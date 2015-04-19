@@ -31,10 +31,10 @@ db.run("INSERT INTO authors (name) VALUES (?), (?)",
 	}
 )
 
-db.run("INSERT INTO authorships (auth_id, doc_id) VALUES (?, ?), (?, ?), (?, ?)",
-	'1', '1',
-	'1', '2',
-	'2', '3', 
+db.run("INSERT INTO authorships (auth_name, doc_title) VALUES (?, ?), (?, ?), (?, ?)",
+	'Tester 1', 'Title 1',
+	'Tester 1', 'Title 2',
+	'Tester 2', 'Title 3', 
 	function(err) {
 		if (err) {
 			console.log(err);

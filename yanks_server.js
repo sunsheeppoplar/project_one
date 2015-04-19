@@ -29,7 +29,6 @@ app.get('/documents', function(req, res) {
 			console.log(err);
 		} else {
 			var documents = data;
-			console.log(documents)
 		}
 		res.render('yanks_index.ejs', {documents: documents});
 	});
@@ -48,11 +47,55 @@ app.get('/document/:id', function(req, res) {
 	});
 });
 
-//new post form
+//new document form
 app.get('/documents/new', function(req, res) {
-	res.render('doc_new.ejs')
+	db.all("SELECT name FROM authors", function(err, data) { if (err) {
+		console.log(err)
+	} else {
+		var dropDownNames = data
+	}
+	res.render('doc_new.ejs', {dropDownNames: dropDownNames});
+});
 });
 
+//create a new document
+app.post('/documents', function(req, res) {
+	var titleInput = req.body.title
+	var bodyInput = req.body.body
+	var imageInput = req.body.image
+	var userInput = req.body.user
+	db.run("INSERT INTO documents (title, body, image) VALUES (?, ?, ?)", titleInput, bodyInput, imageInput, function(err) {
+		if (err) {
+			console.log(err)
+		// *** Have to figure out a way to sanitize this ***
+		// } else {
+		// 	var lastInsertRowId = 'last_insert_rowid()'
+		// 	var selectStatement = 'SELECT id FROM authors WHERE name =' + " '" + userInput + "'"
+		// 	db.run("INSERT INTO authorships (auth_id, doc_id) VALUES (?, ?)", selectStatement.toString(), lastInsertRowId.toString(), function(err) {
+		// 		if (err) {
+		// 			console.log(err)
+		// 		} else {
+		// 			res.redirect('/documents')
+		// 		}
+		// 	});
+		// }
+		} else {
+			db.run("INSERT INTO authorships (doc_id) VALUES (last_insert_rowid()", function(err) {
+				if (err) {
+					console.log(err)
+				} else { 
+					db.all("INSERT INTO authorships (auth_id) SELECT id FROM authors WHERE name = ?", userInput, function(err) {
+						if (err) {
+							console.log(err)
+						} else {
+							res.redirect('/documents')
+						}
+					});
+				}
+			});
+		}
+	});
+});
 
 //show all authors
 app.get('/authors', function(req, res) {
