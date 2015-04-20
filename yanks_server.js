@@ -109,6 +109,20 @@ app.get('/authors/new', function(req, res) {
 	res.render('auth_new.ejs')
 });
 
+//create a new author
+app.post('/authors', function(req, res) {
+	var usernameInput = req.body.username
+	var emailInput = req.body.email
+	db.run("INSERT INTO authors (name, email) VALUES (?, ?)", usernameInput, emailInput, function(err) {
+		if (err) {
+			console.log(err)
+		} else {
+			res.redirect('/authors')
+		}
+	});
+});
+
+
 //delete a document
 app.delete('/document/:id', function(req, res) {
 	var id = req.params.id
