@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit: <%= individualDoc.title %></title>
+</head>
+<body>
+	<h1>Yanks editorial page</h1>
+	<form <form method="POST" action="/document/<%= individualDoc.id %>?_method=PUT">
+		<textarea name='title' rows='4' cols = 40 placeholder='title'></textarea></br>
+
+		<textarea name='body' rows='20' cols = 40 placeholder='body'></textarea></br>
+
+		<textarea name='image' rows='4' cols = 40 placeholder='image url'></textarea></br>
+		<button>Submit</button>
+	</form>
+
+	Choose from authors/editors list: 
+	<select name="user" form="doc_edit" required>
+		<% for(var i = 0; i < dropDownNames.length; i++) { %>
+
+		<option value="<%=dropDownNames[i].name%>"><%=dropDownNames[i].name%></option>
+		</br>
+
+		<% } %>
+	</select>
+	
+</body>
+</html>

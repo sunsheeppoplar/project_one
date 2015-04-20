@@ -79,6 +79,53 @@ app.post('/documents', function(req, res) {
 	});
 });
 
+//edit document form
+app.get('/document/:id/edit', function(req,res) {
+	var id = req.params.id
+	db.get("SELECT * FROM documents WHERE id = ?", id, function(err, data) {
+		var individualDoc = data
+		if (err) {
+			console.log(err)
+		} else {
+			db.all("SELECT name FROM authors", function(err, data) {
+				var dropDownNames = data
+				if (err) {
+					console.log(err)
+				} else {
+						res.render('doc_edit.ejs', {individualDoc: individualDoc, dropDownNames:dropDownNames})
+				}
+			});
+		}
+	});
+});
+
+//update a document
+app.put('/document/:id', function(req, res) {
+	var titleEdit = req.body.title
+	var bodyEdit = req.body.body
+	var imageEdit = req.body.image
+	var id = req.params.id
+	db.run("UPDATE documents SET title = ?, body = ?, image = ? WHERE id = ?", titleEdit, bodyEdit, imageEdit, id, function(err) { 
+		if (err) {
+			console.log(err)
+		} else {
+			res.redirect('/document/' + parseInt(id))
+		}
+	});
+});
+
+//delete a document
+app.delete('/document/:id', function(req, res) {
+	var id = req.params.id
+	db.run("DELETE FROM documents WHERE id = ?", id, function(err) {
+		if (err) {
+			console.log(err)
+		} else {
+			res.redirect('/documents')
+		}
+	});
+});
+
 //show all authors
 app.get('/authors', function(req, res) {
 	db.all("SELECT * FROM authors", function(err, data) {
@@ -123,17 +170,7 @@ app.post('/authors', function(req, res) {
 });
 
 
-//delete a document
-app.delete('/document/:id', function(req, res) {
-	var id = req.params.id
-	db.run("DELETE FROM documents WHERE id = ?", id, function(err) {
-		if (err) {
-			console.log(err)
-		} else {
-			res.redirect('/documents')
-		}
-	});
-});
 
-app.listen(8888)
-console.log('You\'re listening on port 8888')
+
+app.listen(0888)
+console.log('You\'re listening on port 0888')
