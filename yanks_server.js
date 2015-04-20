@@ -104,6 +104,11 @@ app.get('/author/:id', function(req, res) {
 	});
 });
 
+//new author form
+app.get('/authors/new', function(req, res) {
+	res.render('auth_new.ejs')
+});
+
 //delete a document
 app.delete('/document/:id', function(req, res) {
 	var id = req.params.id
