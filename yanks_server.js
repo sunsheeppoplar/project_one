@@ -74,7 +74,7 @@ app.post('/documents', function(req, res) {
 				} else {
 					res.redirect('/documents')
 				}
-			});
+			});	
 		}
 	});
 });
@@ -104,6 +104,17 @@ app.get('/author/:id', function(req, res) {
 	});
 });
 
+//delete a document
+app.delete('/document/:id', function(req, res) {
+	var id = req.params.id
+	db.run("DELETE FROM documents WHERE id = ?", id, function(err) {
+		if (err) {
+			console.log(err)
+		} else {
+			res.redirect('/documents')
+		}
+	});
+});
 
 app.listen(8888)
 console.log('You\'re listening on port 8888')
