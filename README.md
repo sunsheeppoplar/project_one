@@ -9,7 +9,7 @@ Yanks is intended to be a wikipedia of American soccer players who play domestic
 5. [SQLite](http://www.sqlite.org/) is our database engine. 
 
 #### forking
-To [fork](https://github.com/sunsheeppoplar/project_one) this and run it on your own localhost, press the fork button at the top right corner of this project's github page. We used [Node JS](https://nodejs.org/) to run our servers locally while working on this project. The port you'll need to listen in on is '3000.' Thanks for your interest!
+To [fork](https://github.com/sunsheeppoplar/project_one) this and run it on your own localhost, press the fork button at the top right corner of this project's github page. We used [Node JS](https://nodejs.org/) to run our servers locally while working on this project. The port you'll need to listen in on is '3001.' Thanks for your interest!
 
 #### digital ocean url
-45.55.155.39:3000
+45.55.155.39:3001
