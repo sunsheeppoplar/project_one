@@ -6,7 +6,7 @@ Yanks is intended to be a wikipedia of American soccer players who play domestic
 ### features
 
 #### tools of the trade
-1. Trello! [Here](https://trello.com/b/u4iEltuL/general-assembly-project-one) is the board for this project.
+1. Trello! The work flow and development narrative can be found, additionally, [here](https://trello.com/b/u4iEltuL/general-assembly-project-one) is the board for this project.
 2. [EJS](http://www.embeddedjs.com/) helps us template HTML in an organized and stylish manner.
 3. [Express](http://expressjs.com/) is our server framework.
 4. [Method Override](https://github.com/expressjs/method-override) helps us with PUT and DELETE actions in Express.
