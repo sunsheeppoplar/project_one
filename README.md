@@ -1,5 +1,9 @@
-# project_one
+# Yanks
+
+### background
 Yanks is intended to be a wikipedia of American soccer players who play domestically and internationally with the intent of making it easier to find players with an emphasis on players who could contribute to the National Team pool.
+
+### features
 
 #### tools of the trade
 1. Trello! [Here](https://trello.com/b/u4iEltuL/general-assembly-project-one) is the board for this project.
