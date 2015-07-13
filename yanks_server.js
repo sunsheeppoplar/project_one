@@ -92,7 +92,7 @@ app.get('/document/:id/edit', function(req,res) {
 				if (err) {
 					console.log(err)
 				} else {
-						res.render('doc_edit.ejs', {individualDoc: individualDoc, dropDownNames:dropDownNames})
+					res.render('doc_edit.ejs', {individualDoc: individualDoc, dropDownNames:dropDownNames})
 				}
 			});
 		}
@@ -172,5 +172,5 @@ app.post('/authors', function(req, res) {
 
 
 
-app.listen(3000)
-console.log('You\'re listening on port 3000')
+app.listen(3001)
+console.log('You\'re listening on port 3001')
